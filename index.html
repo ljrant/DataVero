@@ -1,1 +1,898 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Datavero – kansalaisaloitteen valmistelusivu. Luonnos laiksi suurten tiedonsiirtomäärien verosta ja sen perustelut.">
+  <title>Datavero – Laki suurten tiedonsiirtomäärien verosta</title>
 
+  <style>
+    :root{
+      --bg:#f7f7f5;
+      --paper:#ffffff;
+      --ink:#1f2933;
+      --muted:#5f6b76;
+      --line:#d7dce1;
+      --accent:#164e63;
+      --accent-soft:#eaf2f4;
+      --warning:#7a4b00;
+      --warning-bg:#fff7e6;
+      --warning-line:#e6c77b;
+      --max:1080px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.6;
+    }
+
+    a{color:var(--accent)}
+    .wrap{
+      width:min(var(--max), calc(100% - 36px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:70px;
+      gap:20px;
+    }
+
+    .brand{
+      text-decoration:none;
+      color:var(--ink);
+      font-weight:700;
+      font-size:1.05rem;
+    }
+
+    nav{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#334155;
+      font-size:.94rem;
+    }
+
+    nav a:hover{text-decoration:underline}
+
+    .hero{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      padding:72px 0 64px;
+    }
+
+    .eyebrow{
+      margin:0 0 16px;
+      color:var(--accent);
+      font-size:.8rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    h1,h2,h3{
+      margin-top:0;
+      color:#17202a;
+    }
+
+    h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2.7rem, 6vw, 5.5rem);
+      font-weight:400;
+      line-height:1.02;
+      letter-spacing:-.035em;
+      max-width:900px;
+      margin-bottom:24px;
+    }
+
+    .lead{
+      max-width:820px;
+      font-size:1.2rem;
+      color:#46515c;
+      margin:0 0 30px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .button{
+      display:inline-block;
+      padding:11px 16px;
+      border-radius:4px;
+      border:1px solid var(--accent);
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .button.primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .button.secondary{
+      background:#fff;
+      color:var(--accent);
+    }
+
+    .note{
+      color:var(--muted);
+      font-size:.92rem;
+      max-width:780px;
+    }
+
+    section{padding:68px 0}
+
+    section.white{
+      background:#fff;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-intro{
+      max-width:790px;
+      margin-bottom:34px;
+    }
+
+    .section-intro h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:400;
+      letter-spacing:-.02em;
+      margin-bottom:14px;
+    }
+
+    .section-intro p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .fact{
+      padding:24px;
+      border-right:1px solid var(--line);
+    }
+
+    .fact:last-child{border-right:0}
+
+    .fact strong{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.9rem;
+      font-weight:400;
+      color:#17202a;
+      margin-bottom:5px;
+    }
+
+    .fact span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:56px;
+    }
+
+    .text-block h3{
+      font-size:1.1rem;
+      margin-bottom:8px;
+    }
+
+    .text-block p{
+      color:#46515c;
+      margin-top:0;
+    }
+
+    .list{
+      margin:0;
+      padding-left:20px;
+    }
+
+    .list li{
+      margin:0 0 12px;
+      color:#46515c;
+    }
+
+    .plain-steps{
+      counter-reset:item;
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .plain-steps li{
+      counter-increment:item;
+      position:relative;
+      padding:0 0 22px 44px;
+      color:#46515c;
+    }
+
+    .plain-steps li:before{
+      content:counter(item);
+      position:absolute;
+      left:0;
+      top:0;
+      width:28px;
+      height:28px;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.85rem;
+      font-weight:700;
+    }
+
+    .calc-box{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:28px;
+    }
+
+    .calc-box h3{
+      font-size:1.2rem;
+      margin-bottom:20px;
+    }
+
+    .calc-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:11px 0;
+      border-bottom:1px solid #e8ebee;
+    }
+
+    .calc-row:last-child{
+      border-bottom:0;
+      padding-top:18px;
+    }
+
+    .calc-row span{color:var(--muted)}
+    .calc-row strong{text-align:right}
+
+    .calc-row.total strong{
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+
+    .callout{
+      background:var(--accent-soft);
+      border-left:4px solid var(--accent);
+      padding:18px 20px;
+      color:#334155;
+      margin-top:24px;
+    }
+
+    .warning{
+      background:var(--warning-bg);
+      border:1px solid var(--warning-line);
+      padding:18px 20px;
+      color:#5c4215;
+      margin:0 0 28px;
+    }
+
+    .warning strong{
+      color:var(--warning);
+    }
+
+    .timeline{
+      border-top:1px solid var(--line);
+    }
+
+    .timeline-row{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:28px;
+      padding:22px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .timeline-row strong{color:var(--accent)}
+    .timeline-row h3{
+      font-size:1rem;
+      margin-bottom:6px;
+    }
+
+    .timeline-row p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .revenue-table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .revenue-table th,
+    .revenue-table td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid var(--line);
+    }
+
+    .revenue-table th{
+      background:#f3f4f6;
+      font-size:.92rem;
+    }
+
+    .revenue-table tr:last-child td{border-bottom:0}
+
+    .docs{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .doc{
+      background:#fff;
+      border:1px solid var(--line);
+      padding:26px;
+    }
+
+    .doc h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.6rem;
+      font-weight:400;
+      margin-bottom:10px;
+    }
+
+    .doc p{color:var(--muted)}
+
+    .doc .button{
+      margin-top:6px;
+    }
+
+    .subtle{
+      font-size:.9rem;
+      color:var(--muted);
+      margin-top:12px;
+    }
+
+    .faq{
+      border-top:1px solid var(--line);
+    }
+
+    details{
+      border-bottom:1px solid var(--line);
+      padding:0;
+    }
+
+    summary{
+      cursor:pointer;
+      padding:18px 0;
+      font-weight:700;
+    }
+
+    details p{
+      color:var(--muted);
+      margin:0 0 18px;
+      max-width:820px;
+    }
+
+    footer{
+      background:#fff;
+      border-top:1px solid var(--line);
+      padding:36px 0 48px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media(max-width:800px){
+      .topbar-inner{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:18px 0;
+      }
+
+      nav{gap:12px 18px}
+      .hero{padding:52px 0 48px}
+
+      .facts{grid-template-columns:1fr 1fr}
+      .fact:nth-child(2){border-right:0}
+      .fact:nth-child(-n+2){border-bottom:1px solid var(--line)}
+
+      .two-col,
+      .docs{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .timeline-row{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+    }
+
+    @media(max-width:520px){
+      .facts{grid-template-columns:1fr}
+
+      .fact{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+
+      .fact:last-child{border-bottom:0}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#alku">Datavero</a>
+
+    <nav aria-label="Päänavigaatio">
+      <a href="#mista-on-kyse">Mistä on kyse?</a>
+      <a href="#malli">Miten vero toimisi?</a>
+      <a href="#rajaukset">Ketä vero koskisi?</a>
+      <a href="#aikataulu">Aikataulu</a>
+      <a href="#luonnokset">Luonnokset</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="alku">
+    <div class="wrap">
+      <p class="eyebrow">Kansalaisaloitteen valmisteluluonnos</p>
+
+      <h1>Datavero suurimmille datamäärille</h1>
+
+      <p class="lead">
+        Aloitteessa ehdotetaan uutta veroa kaikkein suurimmille tiedonsiirtomäärille.
+        Käytännössä vero voisi koskea esimerkiksi suuria datakeskuksia, pilvipalveluja
+        ja tekoälylaskentaa. Tavallinen kotikäyttö ja tavalliset internetliittymät
+        on tarkoitus rajata veron ulkopuolelle.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="#mista-on-kyse">Lue lyhyesti</a>
+        <a class="button secondary" href="#luonnokset">Kommentoi luonnoksia</a>
+        <a class="button secondary" href="https://www.kansalaisaloite.fi/fi" target="_blank" rel="noopener">Kansalaisaloite.fi</a>
+      </div>
+
+      <p class="note">
+        <strong>Huom.</strong> Aloite ei ole vielä käynnissä Kansalaisaloite.fi-palvelussa.
+        Linkki vie tällä hetkellä palvelun etusivulle.
+      </p>
+    </div>
+  </section>
+
+  <section id="mista-on-kyse">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Mistä tässä on kyse?</h2>
+        <p>
+          Ajatus on yksinkertainen: jos Suomessa sijaitsevasta datankäsittelykohteesta
+          siirretään poikkeuksellisen paljon tietoa internetiin tai internetistä sisään,
+          kaikkein suurimman liikenteen ylittävästä osasta maksettaisiin veroa.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>Vero ei perustuisi rakennuksen omistamiseen</h3>
+          <p>
+            Veron maksaisi se yritys tai muu toimija, jonka toiminta aiheuttaa suuren
+            tiedonsiirtomäärän. Esimerkiksi kunta ei joutuisi maksamaan veroa vain siksi,
+            että se omistaa datakeskukselle vuokratun rakennuksen.
+          </p>
+        </div>
+
+        <div>
+          <h3>Vero ei tarkastelisi sitä, mitä data sisältää</h3>
+          <p>
+            Verotuksessa mitattaisiin vain siirretyn tiedon määrää.
+            Viestien sisältöä, verkkosivuja tai yksittäisten ihmisten internetin käyttöä
+            ei tarvitsisi tarkastella.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Neljä lukua, joilla pääsee alkuun</h2>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <strong>10 PB</strong>
+          <span>vuodessa ilman veroa</span>
+        </div>
+
+        <div class="fact">
+          <strong>3 €/TB</strong>
+          <span>vero 10 PB:n ylittävästä osasta</span>
+        </div>
+
+        <div class="fact">
+          <strong>2030</strong>
+          <span>ensin veroton tiedonkeruuvuosi</span>
+        </div>
+
+        <div class="fact">
+          <strong>2031</strong>
+          <span>vero voisi alkaa tämän jälkeen</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        10 petatavua on erittäin suuri määrä dataa. Luonnoksen tarkoituksena on,
+        etteivät kotitaloudet ja useimmat pienet tai keskisuuret yritykset käytännössä
+        ylittäisi rajaa.
+      </div>
+    </div>
+  </section>
+
+  <section id="malli">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Miten vero toimisi käytännössä?</h2>
+        <p>
+          Liikennettä mitattaisiin siinä kohdassa, jossa data tulee datakeskukseen
+          tai muuhun suureen datankäsittelykohteeseen ja lähtee sieltä ulos.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <ol class="plain-steps">
+            <li>
+              Vuoden aikana lasketaan erikseen sisään tullut ja ulos lähtenyt data.
+            </li>
+            <li>
+              Näistä kahdesta määrästä valitaan suurempi. Näin samaa dataa ei lasketa
+              automaattisesti kahteen kertaan.
+            </li>
+            <li>
+              Ensimmäiset 10 petatavua ovat verottomia.
+            </li>
+            <li>
+              Sen ylittävästä määrästä maksetaan luonnoksen mukaan 3 euroa teratavulta.
+            </li>
+          </ol>
+
+          <p class="subtle">
+            Kiinteistön sisällä palvelimelta toiselle kulkevaa dataa ei lähtökohtaisesti
+            laskettaisi mukaan.
+          </p>
+        </div>
+
+        <div class="calc-box">
+          <h3>Esimerkki</h3>
+
+          <div class="calc-row"><span>Dataa sisään</span><strong>18 PB</strong></div>
+          <div class="calc-row"><span>Dataa ulos</span><strong>14 PB</strong></div>
+          <div class="calc-row"><span>Verotuksessa käytettävä määrä</span><strong>18 PB</strong></div>
+          <div class="calc-row"><span>Veroton osuus</span><strong>10 PB</strong></div>
+          <div class="calc-row"><span>Verollinen osuus</span><strong>8 PB = 8 000 TB</strong></div>
+          <div class="calc-row total"><span>Vero</span><strong>24 000 €</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="rajaukset">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Ketä vero ei olisi tarkoitettu koskemaan?</h2>
+        <p>
+          Luonnoksessa on useita rajauksia, joilla pyritään siihen, ettei sama data
+          joudu verotettavaksi verkossa moneen kertaan eikä vero osu tavallisiin
+          internetliittymiin tai välttämättömiin julkisiin palveluihin.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>Veron ulkopuolelle jäisi muun muassa</h3>
+          <ul class="list">
+            <li>operaattorin asiakkaidensa puolesta välittämä tavallinen internetliikenne</li>
+            <li>internetoperaattorien välinen verkkoliikenne ja internetin vaihtopisteet</li>
+            <li>verkon toiminnan kannalta välttämätön tekninen liikenne</li>
+            <li>viranomaisten lakisääteinen muu kuin kaupallinen toiminta</li>
+            <li>pelastus-, turvallisuus- ja huoltovarmuustoiminta</li>
+            <li>julkisesti rahoitettu muu kuin kaupallinen opetus ja tutkimus</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Yrityksen nimi ei ratkaisisi veroa</h3>
+          <p>
+            Jos esimerkiksi teleoperaattori tarjoaa omia pilvi-, datakeskus- tai
+            tekoälypalveluja, nämä palvelut voisivat olla veronalaisia samalla tavalla
+            kuin muiden yritysten vastaavat palvelut.
+          </p>
+
+          <p>
+            Samoin julkinen tai yleishyödyllinen toimija ei saisi automaattista
+            vapautusta kaupalliselle palvelulle, jota se myy markkinoilla.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mittaus">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Miten dataa mitattaisiin?</h2>
+        <p>
+          Tarkoitus ei ole rakentaa internetiin uutta sisältövalvontaa.
+          Mittauksessa seurattaisiin vain datan kokonaismäärää.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>Nykyisiä verkkolaitteita voisi käyttää</h3>
+          <p>
+            Liikennemäärä voidaan jo nyt mitata verkkolaitteista ja tietojärjestelmistä.
+            Erillistä fyysistä “veromittaria” ei tarvittaisi, jos tiedot voidaan
+            luotettavasti tarkistaa jälkikäteen.
+          </p>
+        </div>
+
+        <div>
+          <h3>Viestien sisältöä ei kerättäisi</h3>
+          <p>
+            Verotusta varten ei kerättäisi sitä, mitä joku kirjoittaa, kenelle viesti
+            menee tai millä verkkosivulla joku käy. Verotuksessa tarvittaisiin vain
+            kokonaismäärät ja verotuksen kannalta tarpeelliset tunnistetiedot.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="aikataulu">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Ensin kerätään tietoa – vasta sitten verotetaan</h2>
+        <p>
+          Datakeskusten todellisista kiinteistökohtaisista liikennemääristä ei ole vielä
+          riittävästi julkista tietoa. Siksi luonnokseen sisältyy kokonainen vuosi,
+          jolloin tietoa kerätään mutta veroa ei vielä makseta.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-row">
+          <strong>1.1.2030</strong>
+          <div>
+            <h3>Laki voisi tulla voimaan</h3>
+            <p>Mittaus ja tiedonkeruu alkaisivat luonnoksen mukaan vuoden 2030 alussa.</p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <strong>Vuosi 2030</strong>
+          <div>
+            <h3>Veroton kokeilu- ja tiedonkeruuvuosi</h3>
+            <p>
+              Selvitetään muun muassa todelliset liikennemäärät, mittauksen toimivuus,
+              kustannukset, mahdollinen verotuotto ja vaikutukset investointeihin.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <strong>Vuoden 2030 jälkeen</strong>
+          <div>
+            <h3>Luvut arvioidaan uudelleen</h3>
+            <p>
+              Jos 10 PB:n raja, 3 €/TB verokanta tai vapautukset osoittautuvat
+              huonoiksi, niitä pitäisi muuttaa eduskunnan säätämällä lailla.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-row">
+          <strong>1.1.2031</strong>
+          <div>
+            <h3>Ensimmäinen mahdollinen verokausi</h3>
+            <p>Varsinaista veroa sovellettaisiin luonnoksen mukaan ensimmäisen kerran vuonna 2031.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Paljonko verosta voisi kertyä?</h2>
+        <p>
+          Tätä ei vielä tiedetä luotettavasti. Alla olevat luvut ovat perusteluluonnoksen
+          laskuesimerkkejä eri liikennemäärillä – eivät ennuste siitä, paljonko vero
+          todella tuottaisi.
+        </p>
+      </div>
+
+      <table class="revenue-table">
+        <thead>
+          <tr>
+            <th>Veronalaista tiedonsiirtoa vuodessa</th>
+            <th>Laskennallinen bruttotuotto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>23 EB</td><td>69 milj. euroa</td></tr>
+          <tr><td>38 EB</td><td>114 milj. euroa</td></tr>
+          <tr><td>48 EB</td><td>144 milj. euroa</td></tr>
+          <tr><td>78 EB</td><td>234 milj. euroa</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        Todellinen tuotto riippuisi siitä, kuinka paljon veronalaista liikennettä
+        Suomessa todella syntyy. Juuri tämän selvittämistä varten luonnokseen ehdotetaan
+        verotonta tiedonkeruuvuotta.
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="luonnokset">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Lue ja kommentoi luonnoksia</h2>
+        <p>
+          Lakiteksti ja perustelut ovat vielä luonnoksia. Ne on julkaistu Google Docsissa,
+          jotta niitä voi lukea ja – dokumenttien jakamisasetusten salliessa – kommentoida
+          suoraan.
+        </p>
+      </div>
+
+      <div class="docs">
+        <article class="doc">
+          <h3>Lakiluonnos</h3>
+          <p>
+            Tässä dokumentissa ovat varsinaiset ehdotetut pykälät: kuka maksaisi veroa,
+            miten liikenne laskettaisiin, mitkä toiminnat olisivat vapaita verosta ja
+            miten tiedonkeruu toteutettaisiin.
+          </p>
+          <a class="button primary" href="https://docs.google.com/document/d/11ECCTB8jgJYpNymAcnr0GxSCegNavYzY7IEAuXNZyG0" target="_blank" rel="noopener">
+            Avaa lakiluonnos Google Docsissa
+          </a>
+          <p class="subtle">Avautuu uuteen välilehteen.</p>
+        </article>
+
+        <article class="doc">
+          <h3>Perustelut</h3>
+          <p>
+            Tässä dokumentissa selitetään, miksi veroa ehdotetaan, miten se on tarkoitus
+            rajata ja mitä vaikutuksia, kustannuksia ja oikeudellisia kysymyksiä pitää
+            vielä selvittää.
+          </p>
+          <a class="button primary" href="https://docs.google.com/document/d/1HRvNJHG-ihLcM-cJE9jf_dlizZ33XYTyLlOdpNZa3aA" target="_blank" rel="noopener">
+            Avaa perustelut Google Docsissa
+          </a>
+          <p class="subtle">Avautuu uuteen välilehteen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="kansalaisaloite">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Kansalaisaloite.fi</h2>
+        <p>
+          Tarkoitus on julkaista ehdotus kansalaisaloitteena. Aloite ei kuitenkaan ole
+          vielä käynnissä, joten allekirjoituksia ei tällä hetkellä voi antaa.
+        </p>
+      </div>
+
+      <div class="warning">
+        <strong>Aloite ei ole vielä käynnissä.</strong>
+        Kun varsinainen aloitesivu julkaistaan Kansalaisaloite.fi-palvelussa, tämän
+        sivun linkki voidaan vaihtaa suoraan aloitteen omalle sivulle.
+      </div>
+
+      <!-- Vaihda tämä href varsinaiseen aloitesivuun, kun aloite julkaistaan. -->
+      <a class="button primary" href="https://www.kansalaisaloite.fi/fi" target="_blank" rel="noopener">
+        Avaa Kansalaisaloite.fi
+      </a>
+    </div>
+  </section>
+
+  <section class="white">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2>Usein kysyttyä</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Joutuisinko maksamaan veroa omasta nettiliittymästäni?</summary>
+          <p>
+            Luonnoksen tarkoituksena on, ettei tavallinen kotitalousliittymä kuulu veron piiriin.
+            Lisäksi operaattorin asiakkaidensa puolesta välittämä tavallinen internetliikenne
+            olisi rajattu verosta pois.
+          </p>
+        </details>
+
+        <details>
+          <summary>Voiko tavallinen yritys joutua veron piiriin?</summary>
+          <p>
+            Periaatteessa veron ratkaisee liikennemäärä, ei yrityksen nimi tai toimiala.
+            Luonnoksen 10 PB:n vuosiraja on kuitenkin tarkoitettu niin korkeaksi, että
+            useimmat pienet ja keskisuuret yritykset jäisivät sen alle.
+          </p>
+        </details>
+
+        <details>
+          <summary>Miksi verotetaan dataa eikä esimerkiksi sähkönkulutusta?</summary>
+          <p>
+            Luonnoksen perusteluissa tiedonsiirtoa pidetään yhtenä mahdollisena tapana
+            kohdistaa vero suuriin datankäsittelykohteisiin. Samalla todetaan, että
+            jatkovalmistelussa mallia pitää verrata esimerkiksi datakeskusten sähköverotukseen.
+          </p>
+        </details>
+
+        <details>
+          <summary>Ovatko 10 PB ja 3 €/TB lopulliset?</summary>
+          <p>
+            Eivät. Ne ovat luonnokseen kirjoitettuja valmisteluarvoja. Ennen veron
+            varsinaista alkamista niitä olisi arvioitava vuoden 2030 tiedonkeruun perusteella.
+          </p>
+        </details>
+
+        <details>
+          <summary>Voinko kommentoida ehdotusta jo nyt?</summary>
+          <p>
+            Voit avata yllä olevat Google Docs -luonnokset. Kommentointimahdollisuus
+            riippuu dokumenttien Google Drive -jakamisasetuksista.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Datavero</strong><br>
+    Kansalaisaloitteen valmistelusivu. Sivulla kuvataan valmisteluluonnosta, ei voimassa olevaa lakia.
+  </div>
+</footer>
+
+</body>
+</html>
