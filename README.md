@@ -2,7 +2,7 @@
 
 Kansalaisaloitteen valmistelusivu:
 
-**Datavero Eli Laki suurten tiedonsiirtomäärien verosta**
+**Datavero eli Laki suurten tiedonsiirtomäärien verosta**
 
 Verkkosivu:
 https://ljrant.github.io/datavero/
