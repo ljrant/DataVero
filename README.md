@@ -1,14 +1,29 @@
-# Datavero
+# Datavero – modulaarinen sivusto
 
-Kansalaisaloitteen valmistelusivu:
+Sivun sisältö on jaettu `sections/`-kansion osiin.
 
-**Datavero eli Laki suurten tiedonsiirtomäärien verosta**
+## Osion siirtäminen
 
-Verkkosivu:
-https://ljrant.github.io/datavero/
+Muuta vain `index.html`-tiedoston `data-include`-rivien järjestystä.
 
-Sivustolla esitellään kansantajuisesti lakiluonnoksen sisältöä.
+Esimerkiksi:
 
-Lakiluonnosta ja perusteluja voi lukea Google Docsissa sivuston linkkien kautta.
+```html
+<div data-include="sections/hero.html"></div>
+<div data-include="sections/luvut.html"></div>
+<div data-include="sections/mista-on-kyse.html"></div>
+```
 
-Huom: kansalaisaloite ei ole vielä käynnissä Kansalaisaloite.fi-palvelussa.
+## Osion muokkaaminen
+
+Muokkaa suoraan vastaavaa tiedostoa `sections/`-kansiossa.
+
+Esimerkiksi aikataulu:
+
+`sections/aikataulu.html`
+
+## Huomio
+
+Osien lataaminen käyttää JavaScriptin `fetch()`-toimintoa.
+Se toimii GitHub Pagesissa, mutta jos avaat `index.html`:n suoraan koneelta
+`file://`-osoitteena, selain voi estää osien lataamisen.
