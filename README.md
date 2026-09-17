@@ -5,7 +5,7 @@ Kansalaisaloitteen valmistelusivu:
 **Datavero Eli Laki suurten tiedonsiirtomäärien verosta**
 
 Verkkosivu:
-https://OMA-GITHUB-NIMESI.github.io/datavero/
+https://ljrant.github.io/datavero/
 
 Sivustolla esitellään kansantajuisesti lakiluonnoksen sisältöä.
 
